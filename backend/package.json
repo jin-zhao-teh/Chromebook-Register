@@ -1,0 +1,18 @@
+{
+  "name": "chromebook-register-backend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --config ./wrangler.jsonc --local --persist",
+    "deploy": "wrangler deploy --config ./wrangler.jsonc",
+    "db:setup": "wrangler d1 execute chromebook_register --config ./wrangler.jsonc --file ./schema.sql"
+  },
+  "dependencies": {
+    "hono": "^4.4.7"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250301.0",
+    "typescript": "^5.5.4",
+    "wrangler": "^4.73.0"
+  }
+}

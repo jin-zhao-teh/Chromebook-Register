@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developers.cloudflare.com/worker/wrangler-schema.json",
+  "name": "chromebook-register",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-03-13",
+  "workers_dev": true,
+
+  "account_id": "c5e985608e78b96f79607c8a04cdddce",
+
+  "rules": [{ "type": "Text", "globs": ["**/*.csv"], "fallthrough": true }],
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "chromebook_register",
+      "database_id": "3ad75e2d-b9ad-4bb0-9889-4fe8b685bc64",
+    },
+  ],
+
+  "vars": {
+    "LOCAL_TIMEZONE": "UTC",
+    "ADMIN_PASSWORD": "Moutanins_register"
+  },
+
+  "triggers": {
+    "crons": [
+      "30 19 * * 1-5",
+      "30 20 * * 1-5",
+      "0 22 * * 1-5",
+      "0 23 * * 1-5",
+      "50 0 * * 1-5"
+    ]
+  },
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true
+    }
+  }
+}
